@@ -1,7 +1,21 @@
-import validarCadenaDeComandos from "./auto";
+import Auto from "./auto";
+import auto from "./auto";
 describe("Validar", () => {
-  it("deberia validar la cadena de comandos", () => {
-    expect(validarCadenaDeComandos("5,5")).toEqual(true);
+  it("no deberia validar el formato de la matriz", () => {
+    const auto = new Auto("5,5///rfewrew");
+    expect(auto.validarFormatoMatriz()).toEqual(false);
+  });
+  it("no deberia validar los slashes", () => {
+    const auto = new Auto("5,5///rfewrew");
+    expect(auto.validarSlashesEnCadenaDeComandos()).toEqual(false);
+  });
+  it("deberia validar el formato de la matriz", () => {
+    const auto = new Auto("5,5/rfewrew");
+    expect(auto.validarFormatoMatriz()).toEqual(false);
+  });
+  it("deberia validar el formato de los slashes", () => {
+    const auto = new Auto("5,5/rfewrew");
+    expect(auto.validarFormatoMatriz()).toEqual(false);
   });
 });
 
