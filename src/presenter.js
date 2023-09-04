@@ -11,5 +11,4 @@ form.addEventListener("submit", (event) => {
   const auto = new Auto(comandosUsuario);
   div.innerHTML = `<p>El tamaño de tu matriz es: ${comandosUsuario}
                    <br> Validez: ${auto.retornarMensajeSobreValidezDeMatriz()}</p>`;
-
 });
