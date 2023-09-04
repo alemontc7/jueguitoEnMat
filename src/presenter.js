@@ -1,15 +1,10 @@
-import sumar from "./sumador";
-
-const first = document.querySelector("#primer-numero");
-const second = document.querySelector("#segundo-numero");
-const form = document.querySelector("#sumar-form");
+const comandos = document.querySelector("#comandos");
+const form = document.querySelector("#mostrar-posicion-final-form");
 const div = document.querySelector("#resultado-div");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  const comandosUsuario = comandos.value;
 
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
-
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
+  div.innerHTML = `<p>El tamaño de tu matriz es: ${comandosUsuario}</p>`;
 });
