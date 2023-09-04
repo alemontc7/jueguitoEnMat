@@ -9,11 +9,12 @@ class Auto {
     this.d;
     this.n;
     this.m;
+    this.comandosProcesados;
   }
 
 
   validarSlashesEnCadenaDeComandos() {
-    const regex = /^[^\/]*\/[^\/]*$/;
+    const regex = /^[^\/]*\/[^\/]*\/[^\/]*$/;
     return regex.test(this.cadenaDeComandos);
   }
 
@@ -24,8 +25,9 @@ class Auto {
       const comandos = this.cadenaDeComandos.split('/');
       this.matrizDeMovimiento = comandos[0];
       this.posicionInicial = comandos[1];
+      this.comandosProcesados = comandos[2];
+      console.log(this.comandosProcesados);
     }
-    
   }
   validarFormatoMatriz() {
     const regex = /^\d+,\d+$/;
@@ -103,7 +105,6 @@ class Auto {
       return "la posicion inicial no esta dentro de los limites";
     }
   }
-  
 }
 
 
