@@ -53,6 +53,31 @@ class Auto {
       return "Formato de slashes no valido"
     }
   }
+  validarFormatoPosicionInicial()
+  {
+    const regex = /^\d,\d+[NnOoSsEe]$/;
+    return regex.test(this.posicionInicial);
+  }
+  retornarMensajeSobreLaValidezDeLaPosicionInicial()
+  {
+    if(this.validarFormatoPosicionInicial())
+    {
+      return "Formato posicion inicial correcto";
+    }
+    else
+    {
+      return "Formato posicion inicial incorrecto";
+    }
+  }
+  obtenerDatosPosicionInicial() {
+    const regex = /^(\d),(\d+)([NOSE])$/;
+    const matches = this.posicionInicial.match(regex);
+
+    const numero1 = parseInt(matches[1], 10);
+    const numero2 = parseInt(matches[2], 10);
+    const letra = matches[3];
+    return numero1 + ", " + numero2 + ", " + letra;
+  }
   
 }
 
