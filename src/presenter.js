@@ -21,4 +21,6 @@ form.addEventListener("submit", (event) => {
   div.innerHTML += ` <br> Validez del formato de la posicion inicial: ${validezFormatoPosicionInicial} `  
   const datosPosicionInicial = auto.obtenerDatosPosicionInicial();
   div.innerHTML +=  `<br> Datos posicion inicial: ${datosPosicionInicial}`
+  const validarPosicionDentroDeLimites = auto.retornarMensajeValidacionDePosicionDentroLimites();
+  div.innerHTML += `<br> ${validarPosicionDentroDeLimites}`;
 });

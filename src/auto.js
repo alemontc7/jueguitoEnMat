@@ -4,6 +4,11 @@ class Auto {
     this.matrizDeMovimiento = " ";
     this.posicionInicial = " ";
     this.indicaciones = " ";
+    this.x;
+    this.y;
+    this.d;
+    this.n;
+    this.m;
   }
 
 
@@ -32,6 +37,8 @@ class Auto {
     const matches = this.matrizDeMovimiento.match(regex);
     const valor1 = parseInt(matches[1], 10);
     const valor2 = parseInt(matches[2], 10);
+    this.n = valor1;
+    this.m = valor2;
     return valor1 + ", " + valor2;
   }
 
@@ -76,7 +83,25 @@ class Auto {
     const numero1 = parseInt(matches[1], 10);
     const numero2 = parseInt(matches[2], 10);
     const letra = matches[3];
+    this.x = numero1;
+    this.y = numero2;
+    this.d = letra;
     return numero1 + ", " + numero2 + ", " + letra;
+  }
+
+  validarPosicionInicialDentroDeLimites() {
+      return this.x >= 0 && this.x <= this.n && this.y >= 0 && this.y <= this.m;
+  }
+  retornarMensajeValidacionDePosicionDentroLimites()
+  {
+    if(this.validarPosicionInicialDentroDeLimites())
+    {
+      return "La posicion inicial esta dentro de los limites";
+    }
+    else
+    {
+      return "la posicion inicial no esta dentro de los limites";
+    }
   }
   
 }
