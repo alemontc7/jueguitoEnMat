@@ -107,7 +107,7 @@ class Auto {
     return regex.test(this.comandosProcesados);
   }
   
-  retornarMernsajeSobreValidezDeFormatoDeOrdenes()
+  retornarMensajeSobreValidezDeFormatoDeOrdenes()
   {
     if(this.validarCadenaDeOrdenesEnComandos())
     {
@@ -118,7 +118,10 @@ class Auto {
       return "El formato de la cadena de comandos no es correcto";
     }
   }
+
+  
 }
+
 
 
 export default Auto;
