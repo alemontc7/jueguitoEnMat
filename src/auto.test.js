@@ -75,5 +75,21 @@ describe("Validar", () => {
     expect(auto.procesarOrdenDerecha()).toEqual(3);
     
   });
+  it("deberia retornar 1,3", () => {
+    const auto = new Auto("5,5/1,2N/A");
+    auto.obtenerFragmentosDeLaCadenaDeComandos();
+    auto.obtenerDatosPosicionInicial();
+    const resultado = auto.procesarAvanzar();
+    expect({ x: resultado.x, y: resultado.y }).toEqual({ x: 1, y: 3 });
+  });
+  it("deberia retornar 1,1", () => {
+    const auto = new Auto("5,5/1,2S/A");
+    auto.obtenerFragmentosDeLaCadenaDeComandos();
+    auto.obtenerDatosPosicionInicial();
+    const resultado = auto.procesarAvanzar();
+    expect({ x: resultado.x, y: resultado.y }).toEqual({ x: 1, y: 1 });
+  });
+  
+
 });
 

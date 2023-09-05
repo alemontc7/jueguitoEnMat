@@ -24,6 +24,6 @@ form.addEventListener("submit", (event) => {
   div.innerHTML += `<br> ${validarPosicionDentroDeLimites}`;
   const validezFormatoOrdenesEnComando = auto.retornarMensajeSobreValidezDeFormatoDeOrdenes();
   div.innerHTML += `<br> ${validezFormatoOrdenesEnComando}`;
-  const direccionFinal = auto.procesarComandoDerecha();
-  div.innerHTML += `<br>Direccion final despues de girar a la izquierda es: ${direccionFinal}`;
+  const posicionaFinal = auto.procesarAvanzar();
+  div.innerHTML += `<br>Posicion final despues de avanzar es: ${posicionaFinal.x + " "  + posicionaFinal.y}`;
 });

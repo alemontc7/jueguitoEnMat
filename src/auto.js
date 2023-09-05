@@ -10,8 +10,10 @@ class Auto {
     this.n;
     this.m;
     this.comandosProcesados;
+    this.movimientos = [[0, 1], [1, 0], [0, -1], [-1, 0]];
     this.mapaDeDirecciones = { 'N': 0, 'E': 1, 'S': 2, 'O': 3 };
     this.mapaDeValoresDirecciones = { 0: 'N', 1: 'E', 2: 'S', 3: 'O'};
+    this.valorDireccion;
   }
   validarSlashesEnCadenaDeComandos() {
     const regex = /^[^\/]*\/[^\/]*\/[^\/]*$/;
@@ -121,13 +123,20 @@ class Auto {
     }
   }
   procesarOrdenIzquierda() {
-    const valorDireccion = (this.mapaDeDirecciones[this.d] + 3) % 4;
-    return valorDireccion;
+    this.valorDireccion = (this.mapaDeDirecciones[this.d] + 3) % 4;
+    return this.valorDireccion;
   }
   procesarOrdenDerecha() {
-    const valorDireccion = (this.mapaDeDirecciones[this.d] + 1) % 4;
-    return valorDireccion;
+    this.valorDireccion = (this.mapaDeDirecciones[this.d] + 1) % 4;
+    return this.valorDireccion;
   }
+  procesarAvanzar() {
+    this.direccion = this.mapaDeDirecciones[this.d];
+    this.x += this.movimientos[this.direccion][0];
+    this.y += this.movimientos[this.direccion][1];
+    return { x: this.x, y: this.y };
+  }
+  
 
 }
 
