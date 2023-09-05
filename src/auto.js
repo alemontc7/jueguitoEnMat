@@ -10,6 +10,8 @@ class Auto {
     this.n;
     this.m;
     this.comandosProcesados;
+    this.mapaDeDirecciones = { 'N': 0, 'E': 1, 'S': 2, 'O': 3 };
+    this.mapaDeValoresDirecciones = { 0: 'N', 1: 'E', 2: 'S', 3: 'O'};
   }
   validarSlashesEnCadenaDeComandos() {
     const regex = /^[^\/]*\/[^\/]*\/[^\/]*$/;
@@ -118,8 +120,11 @@ class Auto {
       return "El formato de la cadena de comandos no es correcto";
     }
   }
+  procesarComandoIzquierda() {
+    const valorDireccion = (this.mapaDeDirecciones[this.d] + 3) % 4;
+    return this.mapaDeValoresDirecciones[valorDireccion];
+  }
 
-  
 }
 
 

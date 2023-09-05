@@ -47,5 +47,20 @@ describe("Validar", () => {
     expect(auto.validarCadenaDeOrdenesEnComandos()).toEqual(true);
   }); 
 
+  it("deberia retornar O de oeste", () => {
+    const auto = new Auto("5,5/1,2N/I");
+    auto.obtenerFragmentosDeLaCadenaDeComandos();
+    auto.obtenerDatosPosicionInicial();
+    expect(auto.procesarComandoIzquierda()).toEqual("O");
+  });
+  
+  it("deberia retornar E de este", () => {
+    const auto = new Auto("5,5/1,2S/I");
+    auto.obtenerFragmentosDeLaCadenaDeComandos();
+    auto.obtenerDatosPosicionInicial();
+    expect(auto.procesarComandoIzquierda()).toEqual("E");
+  });
+
+
 });
 
