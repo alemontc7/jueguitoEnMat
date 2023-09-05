@@ -125,6 +125,11 @@ class Auto {
     return this.mapaDeValoresDirecciones[valorDireccion];
   }
 
+  procesarComandoDerecha() {
+    const valorDireccion = (this.mapaDeDirecciones[this.d] + 1) % 4;
+    return this.mapaDeValoresDirecciones[valorDireccion];
+  }
+
 }
 
 
