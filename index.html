@@ -1,4 +1,12 @@
 <html>
+  <head>
+    <style>
+      p:not(:has(strong)) {
+        color: #4CAF50; 
+        font-style: italic;
+      }
+    </style>
+  </head>
   <body>
     <h1>GPS</h1>
     <form id="mostrar-posicion-final-form">
@@ -7,7 +15,6 @@
       <input type="submit" value="Ejecutar" id="mostrar-posicion-button" />
     </form>
     <div id="resultado-div"></div>
-    <div id="texto-validaciones"></div>
     <script type="module" src="./src/presenter.js"></script>
   </body>
 </html>

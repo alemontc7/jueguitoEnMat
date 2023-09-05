@@ -11,7 +11,7 @@ form.addEventListener("submit", (event) => {
   auto.obtenerFragmentosDeLaCadenaDeComandos();
   
   const validezFormatoSlashes = auto.retornarMensajesSobreValidezDeSlashes();
-  div.innerHTML = `<p> <br> Validez del formato de los slashes: ${validezFormatoSlashes}  `;
+  div.innerHTML = `Validez del formato de los slashes: ${validezFormatoSlashes}`;
   const validezMatriz = auto.retornarMensajeSobreValidezDeMatriz();
   div.innerHTML += `<br> Validez del formato de la matriz:  ${validezMatriz}`
   const tamanioMatriz = auto.obtenerTamanioMatriz();
@@ -19,11 +19,13 @@ form.addEventListener("submit", (event) => {
   const validezFormatoPosicionInicial = auto.retornarMensajeSobreLaValidezDeLaPosicionInicial();
   div.innerHTML += ` <br> Validez del formato de la posicion inicial: ${validezFormatoPosicionInicial} `  
   const datosPosicionInicial = auto.obtenerDatosPosicionInicial();
-  div.innerHTML +=  `<br> Datos posicion inicial: ${datosPosicionInicial}`
+  div.innerHTML +=  `<br> <strong> Datos posicion inicial:</strong> ${datosPosicionInicial}`
   const validarPosicionDentroDeLimites = auto.retornarMensajeValidacionDePosicionDentroLimites();
   div.innerHTML += `<br> ${validarPosicionDentroDeLimites}`;
   const validezFormatoOrdenesEnComando = auto.retornarMensajeSobreValidezDeFormatoDeOrdenes();
   div.innerHTML += `<br> ${validezFormatoOrdenesEnComando}`;
-  const posicionaFinal = auto.procesarAvanzar();
-  div.innerHTML += `<br>Posicion final despues de avanzar es: ${posicionaFinal.x + " "  + posicionaFinal.y}`;
+  const ordenesDelUsuario = auto.obtenerCadenaDeOrdenes();
+  div.innerHTML += `<br><strong>Comandos del usuario: </strong>${ordenesDelUsuario}`;
+  const posicionaFinal = auto.procesarCadenaDeOrdenesMezcladas();
+  div.innerHTML += `<br><strong>Posicion final: </strong>${posicionaFinal[0] + ", "  + posicionaFinal[1] + posicionaFinal[2]}`;
 });

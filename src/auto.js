@@ -8,7 +8,7 @@ class Auto {
     this.y;
     this.d;
     this.n;
-    this.m;
+    this.m; 
     this.comandosProcesados;
     this.movimientos = [[0, 1], [1, 0], [0, -1], [-1, 0]];
     this.mapaDeDirecciones = { 'N': 0, 'E': 1, 'S': 2, 'O': 3 };
@@ -89,15 +89,21 @@ class Auto {
     this.x = numero1;
     this.y = numero2;
     this.d = letra;
+    this.valorDireccion = this.mapaDeDirecciones[this.d];
     return numero1 + ", " + numero2 + ", " + letra;
   }
 
-  validarPosicionInicialDentroDeLimites() {
+  obtenerCadenaDeOrdenes()
+  {
+    return this.comandosProcesados;
+  }
+
+  validarPosicionDentroDeLimites() {
       return this.x >= 0 && this.x <= this.n && this.y >= 0 && this.y <= this.m;
   }
   retornarMensajeValidacionDePosicionDentroLimites()
   {
-    if(this.validarPosicionInicialDentroDeLimites())
+    if(this.validarPosicionDentroDeLimites())
     {
       return "La posicion inicial esta dentro de los limites";
     }
@@ -123,23 +129,34 @@ class Auto {
     }
   }
   procesarOrdenIzquierda() {
-    this.valorDireccion = (this.mapaDeDirecciones[this.d] + 3) % 4;
+    this.valorDireccion = (this.valorDireccion + 3) % 4;
     return this.valorDireccion;
   }
   procesarOrdenDerecha() {
-    this.valorDireccion = (this.mapaDeDirecciones[this.d] + 1) % 4;
+    this.valorDireccion = (this.valorDireccion + 1) % 4;
     return this.valorDireccion;
   }
   procesarAvanzar() {
-    this.direccion = this.mapaDeDirecciones[this.d];
-    this.x += this.movimientos[this.direccion][0];
-    this.y += this.movimientos[this.direccion][1];
+    const movimientoEnX = this.movimientos[this.valorDireccion][0];
+    const movimientoEnY = this.movimientos[this.valorDireccion][1];
+    const nuevoX = this.x + movimientoEnX;
+    const nuevoY = this.y + movimientoEnY;
+    if (nuevoX >= 0 && nuevoX <= this.n && nuevoY >= 0 && nuevoY <= this.m) {
+      this.x = nuevoX;
+      this.y = nuevoY;
+    }
     return { x: this.x, y: this.y };
+
   }
-  
-
+  procesarCadenaDeOrdenesMezcladas()
+  {
+    for (const i of this.comandosProcesados) {
+      if (i === 'D') this.procesarOrdenDerecha();
+      if (i === 'I') this.procesarOrdenIzquierda();
+      else if (i === 'A') this.procesarAvanzar();
+    }
+    const direccionFinal = this.mapaDeValoresDirecciones[this.valorDireccion];
+    return [this.x, this.y, direccionFinal];
+  }
 }
-
-
-
 export default Auto;
