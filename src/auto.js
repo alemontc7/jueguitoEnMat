@@ -120,14 +120,13 @@ class Auto {
       return "El formato de la cadena de comandos no es correcto";
     }
   }
-  procesarComandoIzquierda() {
+  procesarOrdenIzquierda() {
     const valorDireccion = (this.mapaDeDirecciones[this.d] + 3) % 4;
-    return this.mapaDeValoresDirecciones[valorDireccion];
+    return valorDireccion;
   }
-
-  procesarComandoDerecha() {
+  procesarOrdenDerecha() {
     const valorDireccion = (this.mapaDeDirecciones[this.d] + 1) % 4;
-    return this.mapaDeValoresDirecciones[valorDireccion];
+    return valorDireccion;
   }
 
 }

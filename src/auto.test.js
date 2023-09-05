@@ -47,32 +47,32 @@ describe("Validar", () => {
     expect(auto.validarCadenaDeOrdenesEnComandos()).toEqual(true);
   }); 
 
-  it("deberia retornar O de oeste", () => {
+  it("deberia retornar O de oeste: 3", () => {
     const auto = new Auto("5,5/1,2N/I");
     auto.obtenerFragmentosDeLaCadenaDeComandos();
     auto.obtenerDatosPosicionInicial();
-    expect(auto.procesarComandoIzquierda()).toEqual("O");
+    expect(auto.procesarOrdenIzquierda()).toEqual(3);
   });
   
-  it("deberia retornar E de este", () => {
+  it("deberia retornar E de este: 1", () => {
     const auto = new Auto("5,5/1,2S/I");
     auto.obtenerFragmentosDeLaCadenaDeComandos();
     auto.obtenerDatosPosicionInicial();
-    expect(auto.procesarComandoIzquierda()).toEqual("E");
+    expect(auto.procesarOrdenIzquierda()).toEqual(1);
   });
 
-  it("deberia retornar E de este", () => {
+  it("deberia retornar E de este: 1", () => {
     const auto = new Auto("5,5/1,2N/D");
     auto.obtenerFragmentosDeLaCadenaDeComandos();
     auto.obtenerDatosPosicionInicial();
-    expect(auto.procesarComandoDerecha()).toEqual("E");
+    expect(auto.procesarOrdenDerecha()).toEqual(1);
   });
   
-  it("deberia retornar O de oeste", () => {
+  it("deberia retornar O de oeste : 3", () => {
     const auto = new Auto("5,5/1,2S/D");
     auto.obtenerFragmentosDeLaCadenaDeComandos();
     auto.obtenerDatosPosicionInicial();
-    expect(auto.procesarComandoDerecha()).toEqual("O");
+    expect(auto.procesarOrdenDerecha()).toEqual(3);
     
   });
 });
