@@ -4,7 +4,6 @@ import Auto from "./auto";
 const comandos = document.querySelector("#comandos");
 const form = document.querySelector("#mostrar-posicion-final-form");
 const div = document.querySelector("#resultado-div");
-const div2 = document.querySelector("#texto-validaciones");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -23,4 +22,6 @@ form.addEventListener("submit", (event) => {
   div.innerHTML +=  `<br> Datos posicion inicial: ${datosPosicionInicial}`
   const validarPosicionDentroDeLimites = auto.retornarMensajeValidacionDePosicionDentroLimites();
   div.innerHTML += `<br> ${validarPosicionDentroDeLimites}`;
+  const validezFormatoOrdenesEnComando = auto.retornarMernsajeSobreValidezDeFormatoDeOrdenes();
+  div.innerHTML += `<br> ${validezFormatoOrdenesEnComando}`;
 });

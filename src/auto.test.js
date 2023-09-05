@@ -30,9 +30,21 @@ describe("Validar", () => {
     const auto = new Auto("5,5/1,2N/IAISIAIA");
     expect(auto.validarSlashesEnCadenaDeComandos()).toEqual(true);
   });
-  it("no deberia validar el formato de la posicion inicial", () => {
+  it("no deberia validar el formato", () => {
     const auto = new Auto("5,5/1,2B//////ASDASDASDSAD");
+    auto.obtenerFragmentosDeLaCadenaDeComandos();
     expect(auto.validarSlashesEnCadenaDeComandos()).toEqual(false);
+  }); 
+
+  it("no deberia validar el formato de las ordenes", () => {
+    const auto = new Auto("5,5/1,2N/IAISIAIA");
+    auto.obtenerFragmentosDeLaCadenaDeComandos();
+    expect(auto.validarCadenaDeOrdenesEnComandos()).toEqual(false);
+  });
+  it("deberia validar el formato", () => {
+    const auto = new Auto("5,5/1,2N/AI");
+    auto.obtenerFragmentosDeLaCadenaDeComandos();
+    expect(auto.validarCadenaDeOrdenesEnComandos()).toEqual(true);
   }); 
 
 });

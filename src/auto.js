@@ -11,8 +11,6 @@ class Auto {
     this.m;
     this.comandosProcesados;
   }
-
-
   validarSlashesEnCadenaDeComandos() {
     const regex = /^[^\/]*\/[^\/]*\/[^\/]*$/;
     return regex.test(this.cadenaDeComandos);
@@ -26,7 +24,6 @@ class Auto {
       this.matrizDeMovimiento = comandos[0];
       this.posicionInicial = comandos[1];
       this.comandosProcesados = comandos[2];
-      console.log(this.comandosProcesados);
     }
   }
   validarFormatoMatriz() {
@@ -103,6 +100,22 @@ class Auto {
     else
     {
       return "la posicion inicial no esta dentro de los limites";
+    }
+  }
+  validarCadenaDeOrdenesEnComandos() {
+    const regex = /^[IAD]+$/; 
+    return regex.test(this.comandosProcesados);
+  }
+  
+  retornarMernsajeSobreValidezDeFormatoDeOrdenes()
+  {
+    if(this.validarCadenaDeOrdenesEnComandos())
+    {
+      return "El formato de la cadena de comandos es correcto";
+    }
+    else
+    {
+      return "El formato de la cadena de comandos no es correcto";
     }
   }
 }
